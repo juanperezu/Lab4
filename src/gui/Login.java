@@ -1,4 +1,5 @@
 package gui;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +16,7 @@ JTextField txtUsuario;
 JPasswordField txtClave;
 JButton btnAceptar,btnCancelar;
 
+ImageIcon IconOK;
 
 
 public Login(){
@@ -25,11 +27,12 @@ setSize(600, 400);
 
 setLocationRelativeTo(this);
 //2.Inicialar objetos con los contructores de cada clase
+IconOK= new ImageIcon(getClass().getResource(ruta+"ok.png"));
 lblUsuario = new JLabel("Usuario");
 lblClave = new JLabel("Clave");
 txtUsuario = new JTextField("");
 txtClave = new JPasswordField("");
-btnAceptar = new JButton("Aceptar");
+btnAceptar = new JButton(IconOK);
 btnCancelar = new JButton("Cancelar");
 //3. Agregar coordenadas y tamaños a los objetos creados
 

@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Login extends JFrame implements ActionListener{
+public class Login1 extends JFrame implements ActionListener{
 String ruta="/imagenes/";  
 //1. Declaraciones  
 JLabel lblUsuario,lblClave; 
@@ -16,10 +16,10 @@ JTextField txtUsuario;
 JPasswordField txtClave;
 JButton btnAceptar,btnCancelar;
 
-ImageIcon IconOK;
+ImageIcon IconOK=
+new ImageIcon(getClass().getResource(ruta+"ok.png"));
 
-
-public Login(){
+public Login1(){
 setTitle("Ingreso al sistema");
 setLayout(null);//Ignora distribuciones automàticas y aceptar coordenadas definidas
 setSize(600, 400);
@@ -27,7 +27,6 @@ setSize(600, 400);
 
 setLocationRelativeTo(this);
 //2.Inicialar objetos con los contructores de cada clase
-IconOK= new ImageIcon(getClass().getResource(ruta+"ok.png"));
 lblUsuario = new JLabel("Usuario");
 lblClave = new JLabel("Clave");
 txtUsuario = new JTextField("");

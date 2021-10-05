@@ -40,9 +40,9 @@ lblUsuario.setBounds(10,20,100,20);
 txtUsuario.setBounds(110,20,100,20);
 btnAceptar.setBounds(220,20,100,20);
 
-lblClave.setBounds(10,40,100,20);
-txtClave.setBounds(110,40,100,20);
-btnCancelar.setBounds(220,40,100,20); 
+lblClave.setBounds(10,50,100,20);
+txtClave.setBounds(110,50,100,20);
+btnCancelar.setBounds(220,50,100,20); 
 
 add(lblUsuario);
 txtUsuario.setToolTipText("Ingrese el usuario asignado");

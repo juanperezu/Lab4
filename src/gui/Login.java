@@ -3,20 +3,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import users.Usuarios;
+import javax.swing.JPanel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Login extends JFrame implements ActionListener{
 String ruta="/imagenes/";  
+Usuarios miUsuario = new Usuarios();
 //1. Declaraciones  
 JLabel lblUsuario,lblClave; 
 JTextField txtUsuario;
 JPasswordField txtClave;
 JButton btnAceptar,btnCancelar;
 
-ImageIcon IconOK;
+ImageIcon IconOK,IconCancel,IconFondo;
 
 
 public Login(){
@@ -26,14 +31,23 @@ setSize(600, 400);
 
 
 setLocationRelativeTo(this);
+((JPanel)getContentPane()).setOpaque(false);
+
 //2.Inicialar objetos con los contructores de cada clase
 IconOK= new ImageIcon(getClass().getResource(ruta+"ok.png"));
+IconFondo= new ImageIcon(getClass().getResource(ruta+"fondo.png"));
+IconCancel= new ImageIcon(getClass().getResource(ruta+"cancel.png"));
+JLabel lblfondo=new JLabel(IconFondo);
+lblfondo.setBounds(-1, -1, IconFondo.getIconWidth(),
+IconFondo.getIconHeight());
+
+getLayeredPane().add(lblfondo,JLayeredPane.FRAME_CONTENT_LAYER);
 lblUsuario = new JLabel("Usuario");
 lblClave = new JLabel("Clave");
 txtUsuario = new JTextField("");
 txtClave = new JPasswordField("");
 btnAceptar = new JButton(IconOK);
-btnCancelar = new JButton("Cancelar");
+btnCancelar = new JButton(IconCancel);
 //3. Agregar coordenadas y tamaños a los objetos creados
 
 lblUsuario.setBounds(10,20,100,20);
@@ -52,7 +66,6 @@ add(txtClave);
 
 btnCancelar.addActionListener(this);
 btnAceptar.addActionListener(this);
-
 add(btnAceptar);
 add(btnCancelar);
 txtClave.setToolTipText("Ingrese el usuario asignado");
@@ -64,13 +77,27 @@ public void actionPerformed(ActionEvent boton) {
 if (boton.getSource()==btnCancelar){
     setBorrar();
 }
+if(boton.getSource()==btnAceptar){
+    setValidarUsuario();
+}
+
 
 }// fin actionPerformed
 public void setBorrar(){
 txtClave.setText("");
 txtUsuario.setText("");
 setTitle("Operación cancelada");
-
+}
+public void setValidarUsuario(){
+String u= txtUsuario.getText();
+String c= txtClave.getText();
+miUsuario.setId(u);
+miUsuario.setClave(c);
+if( miUsuario.getValidarUsuario() ){ 
+  setTitle("Bienvenido "+ miUsuario.getNombre());  
+ }else{ 
+    setTitle("Error  "+ miUsuario.getId());
+ }// fin si
 }
 
 }// fin de la clase
